@@ -1,0 +1,33 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks # Framework para fazer verificações antes de commitar o código.
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace # Remove os espaços em branco à direita.
+      - id: check-ast # Verifica se os arquivos python analisados são válidos.
+      - id: name-tests-test # Verifica se os arquivos de teste estão nomeados corretamente.
+      - id: check-json # Verifica se não há erros de sintaxe em arquivos .json.
+      - id: check-yaml # Verifica se não há erros de sintaxe em arquivos .yaml.
+      - id: check-toml # Verifica se não há erros de sintaxe em arquivos .toml.
+      - id: detect-private-key # Detecta a presença de chaves privadas.
+      - id: requirements-txt-fixer # Ordena o nome das dependências no arquivo requirements.txt.
+      - id: check-added-large-files # Impede que arquivos grandes sejam commitados (tamanho padrão=500kb).
+      - id: pretty-format-json # Define um padrão para formatação de arquivos .json.
+        args: [--autofix]
+      - id: sort-simple-yaml # Ordena arquivos .yaml simples que consistem apenas em chaves de nível superior.
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black # Biblioteca que formata o código de acordo com a PEP 8.
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8 # Framework que checa o estilo e a qualidade do código Python.
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.11.5
+    hooks:
+      - id: isort # Biblioteca para formatar as importações de acordo com a PEP 8.
+  - repo: https://github.com/econchick/interrogate
+    rev: 1.7.0
+    hooks:
+      - id: interrogate # Framework para verificar a ausência de documentações (docstring) no código.
+        args: [-vv, -i, --fail-under=80]
